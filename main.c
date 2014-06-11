@@ -64,7 +64,6 @@ int remover_d (Deque *de, int x)
 
 int insere_d (Deque *de, int x)
 {
-    printf ("%d \n", de->init_r);
     for (int i = de->init_r; i > 0; i--)
     {
         
@@ -115,27 +114,79 @@ int main (int argc, const char * argv[])
     Deque d; //variavel d do tipo struct deque
     Deque *de; //ponteiro de para um tipo struct deque
     de = &d; //de aponta par ao endereco d
+
+    int opcao; //opcao para o menu
+    opcao = 100;
+    int x; //valor para inserir no DEQUE
     
     //rotinas deque
+    
     init_d (de); //Seta todos iguais a 0
-    de->init_r = 0;
+    
+    de->init_r = 0; //Inicializa as cabeças direita/esquerda igual a 0
     de->init_l = 0;
-    insere_e (de, 100);
-    insere_e (de, 110);
-    insere_e (de, 120);
-    insere_e (de, 130);
-    insere_e (de, 140);
-    insere_e (de, 150);
-    imprime (*de);
-    //remover_e (de, 150);
-    //remover_e (de, 140);
-    remover_d (de, 100);
-    imprime (*de);
-    insere_d (de, 500);
-    imprime (*de);
-    //imprime (*de);
-    // insert code here...
-    //printf("Hello, World!\n");
+    
+    //Loop para o menu
+    while (opcao > 0)
+    {
+        printf("\e[H\e[2J");
+        printf ("===========================================================\n");
+        printf ("======================DEQUE================================\n");
+        printf ("1) insere elementos pela esquerda\n");
+        printf ("2) insere elementos pela direita\n");
+        printf ("3) remove elementos pela esquerda\n");
+        printf ("4) remove elementos pela direita\n");
+        printf ("5) imprime deque\n");
+        printf ("0) encerra o programa\n");
+        printf ("===========================================================\n");
+        printf ("===========================================================\n");
+        scanf ("%d", &opcao);
+        printf("\e[H\e[2J");
+        switch (opcao) {
+            case 1:
+                printf ("Digite um valor para inserir no DEQUE a esquerda\n");
+                scanf ("%d", &x);
+                insere_e (de, x);
+                imprime (*de);
+                scanf ("%d", &opcao);
+                printf("\e[H\e[2J");
+                break;
+            case 2:
+                printf ("Digite um valor para inserir no DEQUE a direita\n");
+                scanf ("%d", &x);
+                insere_d (de, x);
+                imprime (*de);
+                scanf ("%d", &opcao);
+                printf("\e[H\e[2J");
+                break;
+            case 3:
+                imprime (*de);
+                printf ("Digite um valor para remover do DEQUE a esquerda\n");
+                scanf ("%d", &x);
+                remover_e (de, x);
+                imprime (*de);
+                scanf ("%d", &opcao);
+                printf("\e[H\e[2J");
+                break;
+            case 4:
+                imprime (*de);
+                printf ("Digite um valor para remover do DEQUE a direita\n");
+                scanf ("%d", &x);
+                remover_d (de, x);
+                imprime (*de);
+                scanf ("%d", &opcao);
+                printf("\e[H\e[2J");
+                break;
+            case 5:
+                imprime (*de);
+                scanf ("%d", &opcao);
+                break;
+            case 0:
+                printf("\e[H\e[2J");
+                return 0;
+        }
+        
+    }
     return 0;
 }
 
