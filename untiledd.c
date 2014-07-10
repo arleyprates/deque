@@ -21,11 +21,10 @@ int insereDireita (Deque *D1, int item) {
 	Deque *novo, *aux;
 	if (D1->direita == NULL && D1->item == -1) {
 		printf ("D1 %p\n", D1);
-		aux = D1;
 		novo = createItem ();
 		D1->direita = novo;
 		D1->direita->item = item;
-		D1->direita->esquerda = aux;
+		D1->direita->esquerda = NULL;
 	} else {
 		aux = D1->direita->direita;
 		novo = createItem();
