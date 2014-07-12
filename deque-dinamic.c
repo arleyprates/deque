@@ -59,7 +59,7 @@ Deque* initDeque () {
 	return no;
 }
 
-int main () {
+int main (int argc, const char *argv[]) {
 	Deque *D1;	
 	D1 = initDeque ();
 	insereDireita (D1, 100);
