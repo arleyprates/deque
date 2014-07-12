@@ -2,7 +2,7 @@
 //  deque-dinamic.c
 //  Implementacao do tipo Abastrato Deque com apontador alocado dinamicamente
 //
-//  Created by Arley Prates on 10/06/14.
+//  Created by Arley Prates on 11/07/14.
 //  Copyright (c) 2014 ___ARLEYPRATES___. All rights reserved.
 //	
 
