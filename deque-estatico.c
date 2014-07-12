@@ -1,6 +1,6 @@
 //
-//  main.c
-//  deque
+//  deque-estatico.c
+//  Implementacao do tipo Abastrato Deque alocado estaticamente
 //
 //  Created by Arley Prates on 10/06/14.
 //  Copyright (c) 2014 ___ARLEYPRATES___. All rights reserved.
