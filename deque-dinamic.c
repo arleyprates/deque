@@ -15,9 +15,6 @@ typedef struct deque {
 }Deque;
 
 int insereEsquerda (Deque *D1, int item) {
-	Deque *aux;
-	aux = D1->direita;
-
 	if (D1->direita != NULL) {
 		D1->direita->esquerda = (Deque*) malloc (sizeof (Deque));
 		if (D1->direita->esquerda == NULL)
@@ -35,10 +32,10 @@ int insereEsquerda (Deque *D1, int item) {
 		printf("RETORNO5 \n");
 		return 0;
 	}
-
 	printf("RETORNO3\n");
 	return 0;
 }
+
 int insereDireita (Deque *D1, int item) {
 	Deque *aux;
 	aux = D1->direita;
@@ -84,13 +81,48 @@ Deque* initDeque () {
 	return no;
 }
 
+int removerDireita (Deque *D1, int item) {
+	Deque *aux;
+	aux = D1->direita;
+	if (D1->direita != NULL) {
+		while (D1->direita != NULL) {
+			if (D1->direita->direita == NULL) {
+				printf("BREAK1 \n");
+				break;
+			}
+			printf("antes D1->direita->item %d\n", D1->direita->item);
+			D1->direita = D1->direita->direita;
+			printf("depois D1->direita->item %d\n", D1->direita->item);
+			
+		}
+		aux->direita = D1->direita;
+		D1->direita = D1->direita->esquerda;
+
+		while (D1->direita->esquerda != NULL) {
+			printf("while !!!\n");
+			D1->direita = D1->direita->esquerda;
+		}
+		printf("depois do while D1->direita->item %d\n", D1->direita->item);
+		free (aux->direita->esquerda);
+		aux->direita->esquerda = NULL;
+		free (aux->direita);
+		aux->direita = NULL;
+	}
+	printf("RETORNO6 \n");
+	printf("D1->direita->item %d\n", D1->direita->item);
+	printf("D1->direita->direita->item %d\n", D1->direita->esquerda->item);
+	return 0;
+}
 int main (int argc, const char *argv[]) {
 	Deque *D1;	
 	D1 = initDeque ();
 	insereEsquerda (D1,	10);
 	insereEsquerda (D1,	20);
-	insereDireita (D1, 5);
+	//insereDireita (D1, 5);
 	insereEsquerda (D1,	30);
+	imprime (*D1);
+	removerDireita (D1, 5);
+	imprime (*D1);
 	/*
 	insereEsquerda (D1,	2);
 	insereDireita (D1, 100);
@@ -103,6 +135,6 @@ int main (int argc, const char *argv[]) {
 	insereEsquerda (D1,	5);
 	insereDireita (D1, 600);
 	*/
-	imprime (*D1);
+	
 	return 0;
 }
