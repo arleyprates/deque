@@ -82,37 +82,38 @@ Deque* initDeque () {
 }
 
 int removerDireita (Deque *D1, int item) {
-	Deque *aux;
-	aux = D1->direita;
-	if (D1->direita != NULL) {
-		while (D1->direita != NULL) {
-			if (D1->direita->direita == NULL) {
-				printf("BREAK1 \n");
+	Deque *aux, *auxiliar;
+	//aux, auxiliar = D1->direita;
+	aux = D1;
+	//aux->direita = D1->direita;
+	//printf("aux->direita->item %d\n", aux->direita->item);
+	auxiliar = D1;
+	//auxiliar->direita = D1->direita;	
+	if (auxiliar->direita != NULL) {
+		while (auxiliar->direita != NULL) {
+			if (auxiliar->direita->direita == NULL) {
+				printf ("BREAK1 \n");
 				break;
 			}
-			printf("antes D1->direita->item %d\n", D1->direita->item);
-			D1->direita = D1->direita->direita;
-			printf("depois D1->direita->item %d\n", D1->direita->item);
-			
+			auxiliar->direita = auxiliar->direita->direita;
 		}
-		aux->direita = D1->direita;
-		D1->direita = D1->direita->esquerda;
-
-		while (D1->direita->esquerda != NULL) {
-			printf("while !!!\n");
-			D1->direita = D1->direita->esquerda;
-		}
-		printf("depois do while D1->direita->item %d\n", D1->direita->item);
-		free (aux->direita->esquerda);
-		aux->direita->esquerda = NULL;
-		free (aux->direita);
-		aux->direita = NULL;
+		D1->direita = auxiliar->direita;
+		D1->direita = auxiliar->direita->esquerda;
+		free (D1->direita->direita->esquerda);
+		D1->direita->direita->esquerda = NULL;
+		printf("D1->direita->item %d \n", D1->direita->item);
+		//free (D1->direita->direita);
+		D1->direita->direita = NULL;
+		printf("D1->direita->item %d \n", D1->direita->item);
+		printf("aux->direita->item %d \n", aux->direita->item);
+		return 0;
 	}
 	printf("RETORNO6 \n");
 	printf("D1->direita->item %d\n", D1->direita->item);
-	printf("D1->direita->direita->item %d\n", D1->direita->esquerda->item);
+	printf("D1->direita->direita %p\n", D1->direita->esquerda);
 	return 0;
 }
+
 int main (int argc, const char *argv[]) {
 	Deque *D1;	
 	D1 = initDeque ();
@@ -120,9 +121,10 @@ int main (int argc, const char *argv[]) {
 	insereEsquerda (D1,	20);
 	//insereDireita (D1, 5);
 	insereEsquerda (D1,	30);
+	//printf ("D1->direita->item %d\n", D1->direita->item);
 	imprime (*D1);
-	removerDireita (D1, 5);
-	imprime (*D1);
+	removerDireita (D1, 10);
+	//imprime (*D1);
 	/*
 	insereEsquerda (D1,	2);
 	insereDireita (D1, 100);
