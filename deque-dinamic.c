@@ -85,12 +85,16 @@ int removerDireita (Deque *D1, int item) {
 	Deque *aux, *auxiliar;
 	//aux, auxiliar = D1->direita;
 	aux = D1;
+	auxiliar = D1;
+	aux->direita = auxiliar->direita;
 	//aux->direita = D1->direita;
 	//printf("aux->direita->item %d\n", aux->direita->item);
-	auxiliar = D1;
 	//auxiliar->direita = D1->direita;	
 	if (auxiliar->direita != NULL) {
 		while (auxiliar->direita != NULL) {
+			printf("aux->direita->item %d\n", aux->direita->item);
+			printf("D1->direita->item %d\n", D1->direita->item);
+			printf("auxiliar->direita->item %d\n\n", auxiliar->direita->item);
 			if (auxiliar->direita->direita == NULL) {
 				printf ("BREAK1 \n");
 				break;
