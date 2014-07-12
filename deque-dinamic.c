@@ -14,6 +14,31 @@ typedef struct deque {
 	struct deque *direita, *esquerda;
 }Deque;
 
+int insereEsquerda (Deque *D1, int item) {
+	Deque *aux;
+	aux = D1->direita;
+
+	if (D1->direita != NULL) {
+		D1->direita->esquerda = (Deque*) malloc (sizeof (Deque));
+		if (D1->direita->esquerda == NULL)
+			printf ("Erro malloc!\n");	
+		D1->direita->esquerda->item = item;
+		D1->direita->esquerda->direita = D1->direita;
+		D1->direita = D1->direita->esquerda;
+		printf("RETORNO4 \n");	
+		return 0;
+	} else {
+		D1->direita = (Deque*) malloc (sizeof (Deque));
+		if (D1->direita == NULL)
+			printf ("Erro malloc!\n");
+		D1->direita->item = item;
+		printf("RETORNO5 \n");
+		return 0;
+	}
+
+	printf("RETORNO3\n");
+	return 0;
+}
 int insereDireita (Deque *D1, int item) {
 	Deque *aux;
 	aux = D1->direita;
@@ -38,7 +63,7 @@ int insereDireita (Deque *D1, int item) {
 	if (D1->direita == NULL)
 		printf ("Erro malloc!\n");	
 	D1->direita->item = item;
-	D1->direita->esquerda = D1;
+	//D1->direita->esquerda = D1;
 	printf("RETORNO1 \n");
 	return 0;
 }
@@ -62,11 +87,22 @@ Deque* initDeque () {
 int main (int argc, const char *argv[]) {
 	Deque *D1;	
 	D1 = initDeque ();
+	insereEsquerda (D1,	10);
+	insereEsquerda (D1,	20);
+	insereDireita (D1, 5);
+	insereEsquerda (D1,	30);
+	/*
+	insereEsquerda (D1,	2);
 	insereDireita (D1, 100);
 	insereDireita (D1, 200);
 	insereDireita (D1, 300);
 	insereDireita (D1, 400);
 	insereDireita (D1, 500);
+	insereEsquerda (D1,	3);
+	insereEsquerda (D1,	4);
+	insereEsquerda (D1,	5);
+	insereDireita (D1, 600);
+	*/
 	imprime (*D1);
 	return 0;
 }
