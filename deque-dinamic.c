@@ -6,7 +6,6 @@ typedef struct deque {
 	struct deque *direita, *esquerda;
 }Deque;
 
-
 int insereDireita (Deque *D1, int item) {
 	Deque *aux;
 	aux = D1->direita;
@@ -27,7 +26,6 @@ int insereDireita (Deque *D1, int item) {
 		printf("RETORNO2\n");
 		return 0;
 	}
-
 	D1->direita = (Deque*) malloc (sizeof (Deque));
 	if (D1->direita == NULL)
 		printf ("Erro malloc!\n");	
@@ -47,25 +45,20 @@ void imprime (Deque D1) {
 
 Deque* initDeque () {
 	Deque *no;
-	
 	no = (Deque*) malloc (sizeof (Deque));
 	if (no == NULL)
 		printf ("Erro malloc !!!\n");
-
 	return no;
 }
-int main () {
-	Deque *D1;
-	
-	D1 = initDeque ();
 
-	
+int main () {
+	Deque *D1;	
+	D1 = initDeque ();
 	insereDireita (D1, 100);
 	insereDireita (D1, 200);
 	insereDireita (D1, 300);
 	insereDireita (D1, 400);
 	insereDireita (D1, 500);
 	imprime (*D1);
-	
 	return 0;
 }
