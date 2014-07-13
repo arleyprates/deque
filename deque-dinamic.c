@@ -87,11 +87,17 @@ Deque* initDeque () {
 
 int removerEsquerda (Deque *D1) {
 	Deque aux;
-	printf("removerEsquerda \n\n");
+	printf("Remover Esquerda \n");
+	//UM ELEMENTO NO DEQUE
+	if (D1->direita != NULL && D1->direita->direita == NULL && D1->direita->esquerda == NULL) {
+		free (D1->direita);
+		D1->direita = NULL;
+		printf ("RETORNO12 \n");
+		return 0;
+	}
+	//MAIS DE UM ELEMENTO NO DEQUE
 	if (D1->direita != NULL) {
-		imprime (*D1);
 		D1->direita = D1->direita->direita;
-		imprime (*D1);
 		free (D1->direita->esquerda);
 		D1->direita->esquerda = NULL;
 		printf ("RETORNO8 \n");
@@ -119,8 +125,6 @@ int removerDireita (Deque *D1) {
 						printf ("PENULTIMO ELEMENTO! \n");
 						break;
 					}
-				//printf("BREAK2 \n\n");
-				//break;
 				}
 			D1->direita = D1->direita->direita;
 		}
@@ -135,7 +139,7 @@ int removerDireita (Deque *D1) {
 		D1->direita->direita->esquerda = NULL;
 		D1->direita->direita = NULL;
 		D1->direita = D1->direita->esquerda;
-		D1->direita = &aux; //FUNCIONA SEM -> ENTENDI, QUNADO TEM MAIS DE DOIS ELEMENTOS
+		D1->direita = &aux; // QUANDO TEM MAIS DE DOIS ELEMENTOS
 		//EH NECESSARIO POIS PERDE A REFERENCIA
 		D1->direita = D1->direita->direita;
 		printf("RETORNO6 \n");
@@ -166,8 +170,18 @@ int main (int argc, const char *argv[]) {
 	insereDireita (D1, 700); imprime (*D1);
 
 	removerDireita (D1); imprime (*D1);
+	removerDireita (D1); imprime (*D1);
+	removerDireita (D1); imprime (*D1);
+	removerDireita (D1); imprime (*D1);
+
+	insereDireita (D1, 700); imprime (*D1);
+	removerEsquerda (D1); imprime (*D1);
 
 	removerEsquerda (D1); imprime (*D1);
+
+	removerEsquerda (D1); imprime (*D1);
+
+	removerEsquerda (D1); imprime (*D1);	
 
 	return 0;
 }
