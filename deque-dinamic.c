@@ -164,7 +164,10 @@ int main (int argc, const char *argv[]) {
 	insereDireita (D1, 600); imprime (*D1);
 
 	insereDireita (D1, 700); imprime (*D1);
-	
-	removerDireita (D1); imprime (*D1);		
+
+	removerDireita (D1); imprime (*D1);
+
+	removerEsquerda (D1); imprime (*D1);
+
 	return 0;
 }
