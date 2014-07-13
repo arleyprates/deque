@@ -36,9 +36,11 @@ int main (void) {
   tchequesfund *processos;
   int opcao = 0;
   processos = NULL;
-  system ("cls");
+  //system ("cls");
+  printf("\n\n\n\n");
   do {
-    system ("cls");
+    //system ("cls");
+    printf("\n\n\n\n");
     printf ("Qual a operacao desejada?\n1-Empihar processo;\n2-Priorizar um supermercado;\n");
     printf ("3-Mudar a prioridade de uma processo;\n4-Listar as caracteristica dos processos;\n");
     printf ("0-Sair");
@@ -250,7 +252,7 @@ int empilha (tchequesfund **cheque) {
   printf ("\nDigite a data do cheque:(formato dd/mm/aaaa)\n");
   gets (checkaux->data);
   printf ("Digite o valor do cheque:");
-  scanf ("%d", checkaux->vcheque);
+  scanf ("%d", &checkaux->vcheque);
   printf ("\nDigite o nome do supermercado:\n");
   gets (checkaux->smercado);
   if (*cheque == NULL) {
@@ -381,7 +383,7 @@ void imprimepilha (tchequesfund *procheques) {
       printf("Nome do supermercado: %s;\n",pontaux->smercado);
       printf("Prioridade: %d.\n",pontaux->prioridade);
       printf("---------------------------------------\n");
-      pontaux=pontaux->ant;
+      pontaux = pontaux->ant;
     }
   }
 }
@@ -397,8 +399,8 @@ void imprimetopo (tchequesfund *procheque) {
     printf("Endereco do cliente: %s;\n",procheque->endereco);
     printf("Telefone: %s;\n",procheque->telefone);
     printf("Data do cheque: %s;\n",procheque->data);
-    printf("Nome do supermercado: %s;\n,procheque->smercado);
-    printf("Prioridade: %d.\n,procheque->prioridade);
+    printf("Nome do supermercado: %s;\n",procheque->smercado);
+    printf("Prioridade: %d.\n",procheque->prioridade);
     printf("---------------------------------------\n");                  
   }
 } 
@@ -408,7 +410,7 @@ void imprimebase (tchequesfund *procheque) {
   int achou = 0;
   pontaux = procheque;
   if (pontaux == NULL) {
-    prinft ("Pilha vazia.");
+    printf ("Pilha vazia.");
   } else {
     //while (achou == 0) {
     //}
