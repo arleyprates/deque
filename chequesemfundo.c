@@ -37,14 +37,16 @@ int main (void) {
   int opcao = 0;
   processos = NULL;
   //system ("cls");
-  printf("\n\n\n\n");
+  printf("\n");
   do {
     //system ("cls");
-    printf("\n\n\n\n");
     printf ("Qual a operacao desejada?\n1-Empihar processo;\n2-Priorizar um supermercado;\n");
     printf ("3-Mudar a prioridade de uma processo;\n4-Listar as caracteristica dos processos;\n");
-    printf ("0-Sair");
+    printf ("0-Sair\n\n");
+    scanf ("%d", &opcao);
+    printf("\n\n");
   } while (opcao != 0);
+
   return 0;
 }
 
