@@ -14,6 +14,14 @@ typedef struct deque {
 	struct deque *direita, *esquerda;
 }Deque;
 
+void imprime (Deque D1) {
+	while (D1.direita != NULL) {
+		printf(" %d", D1.direita->item);
+		D1.direita = D1.direita->direita;
+	}
+	printf("\n");
+}
+
 int insereEsquerda (Deque *D1, int item) {
 	if (D1->direita != NULL) {
 		D1->direita->esquerda = (Deque*) malloc (sizeof (Deque));
@@ -39,6 +47,7 @@ int insereEsquerda (Deque *D1, int item) {
 int insereDireita (Deque *D1, int item) {
 	Deque *aux;
 	aux = D1->direita;
+	// INSERE UM SEGUNDO ELEMENTO
 	if (D1->direita != NULL) {
 		while (D1->direita != NULL) {
 			if (D1->direita->direita == NULL)
@@ -53,11 +62,10 @@ int insereDireita (Deque *D1, int item) {
 		D1->direita->direita->item = item;
 		D1->direita->direita->esquerda = D1->direita;
 		D1->direita = aux;
-		printf("D1->direita->item %d\n", D1->direita->item);
-		printf("aux->direita->item %d\n", aux->direita->item);
 		printf("RETORNO2\n");
 		return 0;
 	}
+	//INSERE UM ELEMENTO
 	D1->direita = (Deque*) malloc (sizeof (Deque));
 	if (D1->direita == NULL)
 		printf ("Erro malloc!\n");	
@@ -67,13 +75,7 @@ int insereDireita (Deque *D1, int item) {
 	return 0;
 }
 
-void imprime (Deque D1) {
-	while (D1.direita != NULL) {
-		printf(" %d", D1.direita->item);
-		D1.direita = D1.direita->direita;
-	}
-	printf("\n");
-}
+
 
 Deque* initDeque () {
 	Deque *no;
@@ -102,20 +104,39 @@ int removerEsquerda (Deque *D1) {
 int removerDireita (Deque *D1) {
 	Deque aux;
 	aux = *D1;
-	printf("removerDireita \n\n");
+	printf("Remover Direita \n");
+	//UM ELEMENTO
+	if (D1->direita->direita == NULL && D1->direita->esquerda == NULL) {
+		D1->direita = NULL;
+		printf("RETORNO11 \n");
+		return 0;
+	}
 	if (D1->direita != NULL) {
 		while (D1->direita != NULL) {
 			if (D1->direita->direita == NULL) {
-				printf ("BREAK1 \n\n");
-				break;
-			}
-			imprime (*D1);
+			} else {
+					if (D1->direita->direita->direita == NULL) {
+						printf ("PENULTIMO ELEMENTO! \n");
+						break;
+					}
+				//printf("BREAK2 \n\n");
+				//break;
+				}
 			D1->direita = D1->direita->direita;
 		}
-		D1->direita = D1->direita->esquerda->esquerda;
-		free (D1->direita->direita->direita);
-		D1->direita->direita->direita = NULL;
-		D1->direita = &aux;
+		//ESTOU NO PENULTIMO E QUERO RETIRAR O ULTIMO
+		if (D1->direita->esquerda == NULL) {
+			D1->direita->direita->esquerda = NULL;
+			D1->direita->direita = NULL;
+			printf ("RETORNO10 \n");
+			return 0;
+		}
+		//TRES ELEMENTOS
+		D1->direita->direita->esquerda = NULL;
+		D1->direita->direita = NULL;
+		D1->direita = D1->direita->esquerda;
+		D1->direita = &aux; //FUNCIONA SEM -> ENTENDI, QUNADO TEM MAIS DE DOIS ELEMENTOS
+		//EH NECESSARIO POIS PERDE A REFERENCIA
 		D1->direita = D1->direita->direita;
 		printf("RETORNO6 \n");
 		return 0;
@@ -127,25 +148,23 @@ int removerDireita (Deque *D1) {
 int main (int argc, const char *argv[]) {
 	Deque *D1;	
 	D1 = initDeque ();
-	insereDireita (D1, 100);
-	printf ("imprime1\n");
-	imprime (*D1);
-	insereDireita (D1, 200);
-	printf ("imprime2\n");
-	imprime (*D1);
+	
+	insereDireita (D1, 100); imprime (*D1);
+	
+	removerDireita (D1); imprime (*D1);
+	
+	insereDireita (D1, 200); imprime (*D1);
+	
+	insereDireita (D1, 300); imprime (*D1);
 
+	insereDireita (D1, 400); imprime (*D1);
 
-	removerDireita (D1);
-	printf ("imprime3\n");
-	imprime (*D1);
-	insereDireita (D1, 600);
-	printf ("imprime4\n");
-	imprime (*D1);
-	insereDireita (D1, 700);
-	printf ("imprime5\n");
-	imprime (*D1);
-	removerDireita (D1);
-	printf ("imprime6\n");
-	imprime (*D1);		
+	removerDireita (D1); imprime (*D1);
+
+	insereDireita (D1, 600); imprime (*D1);
+
+	insereDireita (D1, 700); imprime (*D1);
+	
+	removerDireita (D1); imprime (*D1);		
 	return 0;
 }
