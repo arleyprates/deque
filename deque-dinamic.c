@@ -150,40 +150,29 @@ int removerDireita (Deque *D1) {
 }
 
 int main (int argc, const char *argv[]) {
-	Deque *D1;	
+	Deque *D1;
+	int i = 0;
 	D1 = initDeque ();
-
-	insereEsquerda (D1, 9999; imprime (*D1);
-	
+	while (i < 100000) {
+		insereDireita (D1, 100); 
+		i++;
+	}
+	imprime (*D1);
+	i = 0;
+	while (i < 100000) {
+		removerEsquerda (D1);
+		i++;
+	}
+	imprime (*D1);
+	/*
 	insereDireita (D1, 100); imprime (*D1);
+	insereEsquerda (D1, 9999); imprime (*D1);
+	insereEsquerda (D1, 9999); imprime (*D1);
+	insereEsquerda (D1, 9999); imprime (*D1);
+	insereDireita (D1, 100); imprime (*D1);
+	insereEsquerda (D1, 9999); imprime (*D1);
 	
 	removerDireita (D1); imprime (*D1);
-	
-	insereDireita (D1, 200); imprime (*D1);
-	
-	insereDireita (D1, 300); imprime (*D1);
-
-	insereDireita (D1, 400); imprime (*D1);
-
-	removerDireita (D1); imprime (*D1);
-
-	insereDireita (D1, 600); imprime (*D1);
-
-	insereDireita (D1, 700); imprime (*D1);
-
-	removerDireita (D1); imprime (*D1);
-	removerDireita (D1); imprime (*D1);
-	removerDireita (D1); imprime (*D1);
-	removerDireita (D1); imprime (*D1);
-
-	insereDireita (D1, 700); imprime (*D1);
-	removerEsquerda (D1); imprime (*D1);
-
-	removerEsquerda (D1); imprime (*D1);
-
-	removerEsquerda (D1); imprime (*D1);
-
-	removerEsquerda (D1); imprime (*D1);	
-
+	removerEsquerda (D1); imprime (*D1);*/
 	return 0;
 }
