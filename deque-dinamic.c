@@ -152,6 +152,8 @@ int removerDireita (Deque *D1) {
 int main (int argc, const char *argv[]) {
 	Deque *D1;	
 	D1 = initDeque ();
+
+	insereEsquerda (D1, 9999; imprime (*D1);
 	
 	insereDireita (D1, 100); imprime (*D1);
 	
