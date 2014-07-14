@@ -44,6 +44,8 @@ int main (void) {
     printf ("3-Mudar a prioridade de uma processo;\n4-Listar as caracteristica dos processos;\n");
     printf ("0-Sair\n\n");
     scanf ("%d", &opcao);
+    if (opcao == 1)
+      empilha (processos);
     printf("\n\n");
   } while (opcao != 0);
 
@@ -246,9 +248,9 @@ int empilha (tchequesfund **cheque) {
   checkaux->id = 1000 + contador;
   contador = contador + 1;
   checkaux->prioridade = 0;
-  printf ("Digite o nome do cidad„o que passou o cheque sem fundo:");
+  printf ("Digite o nome do cidadao que passou o cheque sem fundo:");
   gets (checkaux->nome);
-  printf ("\nDigite o endereco do cidad„o:\n");
+  printf ("\nDigite o endereco do cidadao:\n");
   gets (checkaux->endereco);
   printf ("\nDigite o telefone:\n");
   printf ("\nDigite a data do cheque:(formato dd/mm/aaaa)\n");
