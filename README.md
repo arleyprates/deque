@@ -1,15 +1,18 @@
 Deque
 
-https://www.dropbox.com/s/y1k0lbw22qdm7ds/bandicam%202014-07-25%2002-45-41-863.avi
+Código deque-dinamic.c
 
-Portanto, no nosso código, na função main, onde inicia todo o processo, de inicialização do Deque, ou seja, criando um ponteiro do tipo struct Deque.
+Video: https://www.dropbox.com/s/y1k0lbw22qdm7ds/bandicam%202014-07-25%2002-45-41-863.avi
+
+No nosso código, na função main, onde inicia todo o processo, de inicialização do Deque, ou seja, criando um ponteiro do tipo struct Deque.
 
 Então, centralizamos em uma função, a alocação de um espaço de memória do tipo Deque, em initDeque.
 
 D1 vai apontar para o espaço de memória retornado pela função initDeque.
 
 InitDeque, n recebe nenhum parâmetro e retorna um ponteiro do tipo Deque.
-Simplesmente faz a alocação de memória do tipo e tamanho Deque.
+Simplesmente faz a alocação
+de memória do tipo e tamanho Deque.
 
 A partir daí, o programa pode se comportar como o usuário desejar.
 Inserindo pela direita ou esquerda.
